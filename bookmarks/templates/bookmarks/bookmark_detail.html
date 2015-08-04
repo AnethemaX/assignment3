@@ -1,0 +1,25 @@
+{%extends 'bookmarks/base.html'%}
+{%load staticfiles%}
+
+{%block content%}
+<link rel="stylesheet" type="text/css" href="{% static 'bookmarks/blockquotes.css' %}" />
+
+
+
+<blockquote class='default'>
+    <h1>{{bookmark.title}}</h1>
+    <h2>
+        <a href={{bookmark.content}}>{{bookmark.content}}</a>
+    </h2>
+    <p>{{ bookmark.desc }}</p>
+</blockquote>
+
+{#dirty and lame way to loop back#}
+
+<a href="https://assignment2-anethemax.c9.io/bookmark/{{bookmark.id}}/edit" class="btn btn-info btn2">Edit Bookmark</a>
+<a href="https://assignment2-anethemax.c9.io/bookmark/{{bookmark.id}}/delete" class="btn btn-danger">Delete Bookmark</a>
+<br>
+<br>
+<a href="https://assignment2-anethemax.c9.io/listall" class="btn btn-primary btn3">Back to bookmarks</a>
+{%endblock%}
+

@@ -1,0 +1,15 @@
+{%load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{% static 'bookmarks/style.css' %}" />
+
+<head>
+    <h1>List of Bookmarks</h1>
+</head>
+{% if bookmarks %}
+    <ul>
+    {% for bookmark in bookmarks %}
+       <blockquote class="default"><a href={%url 'detail' bookmark.id %}>{{ bookmark.title }}</a></blockquote>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You have no bookmarks. Try adding some!</p>
+{% endif %}

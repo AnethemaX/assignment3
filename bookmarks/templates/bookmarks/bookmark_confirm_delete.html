@@ -1,0 +1,37 @@
+
+{%load staticfiles%}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'bookmarks/modal.css' %}" />
+
+<!--
+<div class="md-modal md-effect-1" id="modal-1">
+	<div class="md-content">
+
+        <form action="" method="post">{% csrf_token %}
+            <h3>Are you sure you want to delete "{{ object }}"?</h3>
+            <input type="submit" value="Confirm" />
+        </form>
+        
+    </div>
+</div>
+-->
+
+<div class="popup">
+  
+        <form action="" method="post">
+            <div class="upper">
+                {% csrf_token %}
+                Are you sure you want to delete "{{ object }}"?
+            </div>
+            <div class="lower">
+                <input type="submit" value="Yes, go ahead"/>
+            </div>
+        </form>
+  </div>
+  
+     
+    
+  
+</div>
+

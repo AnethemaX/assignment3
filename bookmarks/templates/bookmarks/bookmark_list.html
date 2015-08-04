@@ -1,0 +1,33 @@
+{%extends 'bookmarks/base.html'%}
+{%load staticfiles%}
+
+{%block content%}
+    <link rel="stylesheet" type="text/css" href="{% static 'bookmarks/style.css' %}" />
+    <h1>List of Bookmarks</h1>
+    {% if object_list  %}
+        {% for bookmark in object_list  %}
+            <div class="section"><a href={{ bookmark.content }}>
+                 <div class="title"> 
+                     <p>{{ bookmark.title }}</p>
+                 </div>
+            </a>
+            </div>
+            
+            <div class="section2"><a href={%url 'detail' bookmark.id %}>
+                <div class="moreinfo">
+                    More Info
+                </div>
+            </a></div>
+            
+        {% endfor %}
+    {% else %}
+        <p>No bookmarks are available.</p>
+        
+    {% endif %}
+
+<a href="https://assignment2-anethemax.c9.io/add/" class="btn btn-primary btn-primary btn1" >Create new</a>
+
+
+{%endblock%}
+
+{##}
