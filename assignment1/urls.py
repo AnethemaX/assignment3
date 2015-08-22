@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url(r'^bookmark/(?P<pk>\d+)/edit/$', views.BookmarkUpdate.as_view(),  name='bookmark_update'),
     url(r'^bookmark/(?P<pk>\d+)/delete/$', views.BookmarkDelete.as_view(),  name='bookmark_delete'),
     url(r'^accounts/', include('accounts.urls')),
-
+    url(r'^home/$', views.homepage, name='homepage')
 
 )

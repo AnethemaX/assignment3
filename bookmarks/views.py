@@ -16,24 +16,28 @@ from .forms import BookmarkForm, BookmarkFormUpdate
 from .models import Bookmark
 from django.core.serializers.json import DjangoJSONEncoder
 
+def homepage(request):
+    return render(request, 'bookmarks/home.html')
+
 class BookmarkList(ListView):
     model = Bookmark
-    queryset = Bookmark.objects.all()
+    #queryset = Bookmark.objects.all()
     
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(BookmarkList, self).dispatch(*args, **kwargs)
-
     
     def get_queryset(self):
         curruser = UserProfile.objects.get(user=self.request.user)
-        folder = self.kwargs['folder']
-        if folder == '':
-            self.queryset = Bookmark.objects.filter(user=curruser)
-            return self.queryset
-        else:
-            self.queryset = Bookmark.objects.all().filter(user=curruser).filter(folder__title__iexact=folder)
-            return self.queryset
+        #folder = self.kwargs['folder']
+        #if folder == '':
+           # self.queryset = Bookmark.objects.filter(user=curruser)
+           # return self.queryset
+        #else:
+        
+        
+        self.queryset = Bookmark.objects.all().filter(user=curruser)
+        return self.queryset
     
     
     def get_context_data(self, **kwargs):
@@ -166,6 +170,7 @@ class MyView(TemplateView):
                     obj = form.save(commit=False)
                     obj.user = curruser #Save the note note under that user
                     obj.save() #save the new object
+                    return HttpResponseRedirect('listall')
                     
                 except Exception, e:
                     print("errors" + str(e))

@@ -17,6 +17,7 @@ from crispy_forms.layout import Submit, Layout, Hidden, Button, HTML, Div, Field
 class BookmarkForm(forms.ModelForm):
     class Meta: 
         model = Bookmark
+        #fields =('','')
         fields = '__all__'
         
     
