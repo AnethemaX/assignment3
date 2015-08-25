@@ -3,30 +3,38 @@
 
 {%block content%}
     <link rel="stylesheet" type="text/css" href="{% static 'bookmarks/style.css' %}" />
-    <h1>List of Bookmarks</h1>
+    <h1>My Bookmarks</h1>
     {% if object_list  %}
         {% for bookmark in object_list  %}
-            <div class="section"><a href={{ bookmark.content }}>
-                 <div class="title"> 
-                     <p>{{ bookmark.title }}</p>
-                 </div>
-            </a>
+        <div class='wrapper'>
+            <div class='section'>
+                <a href={{ bookmark.content }}>
+                    <div class="title"> 
+                        <p>{{ bookmark.title }}</p>
+                    </div>
+                </a>
+            
             </div>
             
-            <div class="section2"><a href={%url 'detail' bookmark.id %}>
-                <div class="moreinfo">
-                    More Info
-                </div>
-            </a></div>
+            <div class='section2'>
+                <a href={%url 'detail' bookmark.id %}>
+                    <div class="moreinfo">
+                        More Info
+                    </div>
+                </a>
+            </div>
+        </div>
             
         {% endfor %}
     {% else %}
-        <p>No bookmarks are available.</p>
+    <div class='wrapper'>
+        <p>No bookmarks are available. Why not create some?</p>
+    </div>
         
     {% endif %}
-
-<a href="/add/" class="btn btn-primary btn-primary btn1" >Create new</a>
-
+<div class='wrapper'>
+<a href="/add/" class="btn btn-primary btn-primary btn1">Create new</a>
+</div>
 
 {%endblock%}
 

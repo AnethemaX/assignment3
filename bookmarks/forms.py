@@ -18,7 +18,7 @@ class BookmarkForm(forms.ModelForm):
     class Meta: 
         model = Bookmark
         #fields =('','')
-        fields = '__all__'
+        exclude = ('user',)
         
     
     def __init__(self, *args, **kwargs):
